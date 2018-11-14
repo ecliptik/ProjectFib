@@ -1,5 +1,5 @@
 FROM python:3.5.2-alpine
-LABEL maintainer="Micheal Waltz <ecliptik@gmail.com>"
+LABEL maintainer="Micheal Waltz <docker@ecliptik.com>"
 
 #App port
 EXPOSE 5000
