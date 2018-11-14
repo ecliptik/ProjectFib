@@ -1,16 +1,12 @@
 FROM python:3.5.2-alpine
-MAINTAINER Micheal Waltz <ecliptik@gmail.com>
-
-#Set environment vars
-ENV APP_DIR=/app
+LABEL maintainer="Micheal Waltz <ecliptik@gmail.com>"
 
 #App port
 EXPOSE 5000
 
 # Setup app dir
-WORKDIR ${APP_DIR}
-RUN mkdir -p ${APP_DIR}
-COPY requirements.txt ${APP_DIR}/
+WORKDIR /app
+COPY requirements.txt ./
 
 # Install build packages, python dependencies, and clean up
 RUN apk --no-cache add \
@@ -20,7 +16,7 @@ RUN apk --no-cache add \
     apk del build-dependencies
 
 # Copy the app after installing dependencies
-COPY *.py ${APP_DIR}/
+COPY ./app/*.py ./
 
 #Run app
 ENTRYPOINT ["python"]
